@@ -6,7 +6,7 @@
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 16:17:35 by lyaiche           #+#    #+#             */
-/*   Updated: 2021/10/25 13:20:50 by lyaiche          ###   ########.fr       */
+/*   Updated: 2021/10/26 18:13:45 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
