@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lucasyaiche <lucasyaiche@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:28:23 by lyaiche           #+#    #+#             */
-/*   Updated: 2021/10/26 17:53:33 by lyaiche          ###   ########.fr       */
+/*   Updated: 2021/10/28 23:15:48 by lucasyaiche      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Libft/libft.h"
 
-int	ft_printf(const char *printed)
+int	ft_printf(const char *printed, ...)
 {
 	return (0);
 }
