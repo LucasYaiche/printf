@@ -49,23 +49,24 @@ CFLAGS = -Wall -Wextra -Werror
 
 all:				${NAME}
 
-${NAME}:			${OBJS_LIBFT}
-					${AR} ${NAME} ${OBJS_LIBFT}
+${NAME}:			${OBJS_LIBFT} ${OBJS_PRINTF}
+					${AR} ${NAME} ${OBJS_LIBFT} ${OBJS_PRINTF}
 					ranlib ${NAME}
 			
-printf_bonus:		${OBJS_LIBFT} ${OBJS_BONUS_LIBFT}
+libft_bonus:		${OBJS_LIBFT} ${OBJS_BONUS_LIBFT}
 					${AR} ${NAME} ${OBJS_LIBFT} ${OBJS_BONUS_LIBFT}
 					ranlib ${NAME}
 
 clean:
-					rm -f ${OBJS_LIBFT} ${OBJS_BONUS_LIBFT}
+					rm -f ${OBJS_LIBFT} ${OBJS_BONUS_LIBFT} ${OBJS_PRINTF}
 
 fclean:				clean
 					rm -f ${NAME}
 
 re:					fclean all
 
-
+test:				
+					gcc ${CFLAGS} libft.a ft_printf.c && ./a.out
 
 everything:	all bonus
 

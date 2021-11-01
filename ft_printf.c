@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lucasyaiche <lucasyaiche@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:28:23 by lyaiche           #+#    #+#             */
-/*   Updated: 2021/10/30 16:28:38 by lyaiche          ###   ########.fr       */
+/*   Updated: 2021/11/01 19:50:33 by lucasyaiche      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,12 @@ int	ft_printf(const char *printed, ...)
 			else if (printed[i] == 'c')
 			{
 				current_var = va_arg(args, char *);
-				write(1, &current_var, 1);
+				ft_putchar_fd(*current_var, 1);
 			}
 			else if (printed[i] == 's')
 			{
 				current_var = va_arg(args, char *);
-				while (*current_var)
-				{
-					write(1, &current_var, 1);
-					current_var++;
-				}
+				ft_putstr_fd(current_var, 1);
 			}
 		}
 	}
@@ -51,9 +47,13 @@ int	ft_printf(const char *printed, ...)
 
 int	main(void)
 {
+	char	*prenom;
 	char	*nom;
 
-	nom = "L";
-	ft_printf("Je m'appelle %c", nom);
+	prenom = "Lucas";
+	nom = "Yaiche";
+	ft_printf("Je m'appelle %s %s", prenom, nom);
+	//printf("Je m'appelle %s %s", prenom, nom);
+	//printf("test");
 	return (0);
 }
