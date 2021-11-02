@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucasyaiche <lucasyaiche@student.42.fr>    +#+  +:+       +#+        */
+/*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 02:36:53 by lucasyaiche       #+#    #+#             */
-/*   Updated: 2021/10/25 02:45:01 by lucasyaiche      ###   ########.fr       */
+/*   Created: 2021/10/20 17:04:11 by lyaiche           #+#    #+#             */
+/*   Updated: 2021/11/02 17:10:14 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_putstr(char *s)
 {
-	t_list	*returned;
+	int	i;
 
-	if (!lst)
-		return (0);
-	while (lst)
+	if (!s)
 	{
-		returned = lst;
-		lst = lst->next;
+		write(1, "(null)", 6);
+		return (6);
 	}
-	return (returned);
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	return (i);
 }

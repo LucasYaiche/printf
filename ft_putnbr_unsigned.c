@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 14:43:57 by lucasyaiche       #+#    #+#             */
-/*   Updated: 2021/10/25 13:19:19 by lyaiche          ###   ########.fr       */
+/*   Created: 2021/11/02 14:21:13 by lyaiche           #+#    #+#             */
+/*   Updated: 2021/11/02 17:10:19 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isalnum(int str)
+size_t	ft_putnbr_unsigned(unsigned int n, size_t count)
 {
-	if (ft_isalpha(str) || ft_isdigit(str))
-		return (1);
-	return (0);
+	char	written;
+
+	count++;
+	if (n > 9)
+	{
+		count = ft_putnbr_unsigned (n / 10, count);
+		n %= 10;
+	}
+	written = n + '0';
+	write(1, &written, 1);
+	return (count);
 }

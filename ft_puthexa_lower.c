@@ -1,24 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_puthexa_lower.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 16:28:54 by lyaiche           #+#    #+#             */
-/*   Updated: 2021/10/21 13:15:16 by lyaiche          ###   ########.fr       */
+/*   Created: 2021/11/02 14:37:12 by lyaiche           #+#    #+#             */
+/*   Updated: 2021/11/02 18:57:12 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_calloc(size_t elements, size_t len)
+size_t	ft_puthexa_lower(int nbr, size_t count)
 {
-	void	*tab;
+	unsigned int	i;
+	long int		nb;
+	char			*base;
 
-	tab = malloc(elements * len);
-	if (!tab)
-		return (NULL);
-	ft_bzero(tab, elements * len);
-	return (tab);
+	base = "0123456789abcdef";
+	i = 0;
+	nb = 4294967295;
+	nb -= nbr;
+	count = 8;
+	/*
+	if (nbr < 0)
+	{
+		ft_putchar('-');
+		count++;
+		nb *= -1;
+	}
+	*/
+	while (base[i])
+		i++;
+	if (nb >= i)
+		ft_puthexa_lower(nb / i, count);
+	ft_putchar(base[nb % i]);
+	return (count);
 }
+
+// complement a 2 

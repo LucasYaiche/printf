@@ -2,27 +2,11 @@
 #[LIBFT] Fonctions partie principale#
 #===================================#
 
-SRC_LIBFT = ft_isalpha.c ft_memcmp.c  ft_strchr.c  ft_strlen.c  ft_substr.c \
-ft_atoi.c    ft_isascii.c ft_memcpy.c  ft_strdup.c  ft_strncmp.c ft_tolower.c \
-ft_bzero.c   ft_isdigit.c ft_memmove.c ft_strjoin.c ft_strnstr.c ft_toupper.c \
-ft_calloc.c  ft_isprint.c ft_memset.c  ft_strlcat.c ft_strrchr.c ft_isalnum.c ft_memchr.c \
-ft_strlcpy.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
-ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_lstdelone.c
+SRC_LIBFT =ft_strlen.c ft_putchar.c ft_putnbr_unsigned.c \
+ft_putstr.c ft_putnbr.c ft_puthexa_lower.c ft_puthexa_upper.c
 
-PRE_SRC_LIBFT = ${addprefix ${PRE}, ${SRC_LIBFT}}
 
-OBJS_LIBFT = ${PRE_SRC_LIBFT:.c=.o}
-
-#==============================#
-#[LIBFT] Fonctions partie bonus#
-#==============================#
-
-BONUS_LIBFT = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
-ft_lstclear.c ft_lstiter.c ft_lstmap.c
-
-PRE_BONUS_LIBFT = ${addprefix ${PRE}, ${BONUS_LIBFT}}
-
-OBJS_BONUS_LIBFT = ${PRE_BONUS_LIBFT:.c=.o}
+OBJS_LIBFT = ${SRC_LIBFT:.c=.o}
 
 #===================================#
 #[PRINTF] Fonction partie principale#
@@ -36,8 +20,7 @@ OBJS_PRINTF = ${SRC_PRINTF:.c=.o}
 #Tags#
 #====#
 
-PRE = ./Libft/
-NAME = libft.a
+NAME = libftprintf.a
 AR = ar rc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -53,12 +36,9 @@ ${NAME}:			${OBJS_LIBFT} ${OBJS_PRINTF}
 					${AR} ${NAME} ${OBJS_LIBFT} ${OBJS_PRINTF}
 					ranlib ${NAME}
 			
-libft_bonus:		${OBJS_LIBFT} ${OBJS_BONUS_LIBFT}
-					${AR} ${NAME} ${OBJS_LIBFT} ${OBJS_BONUS_LIBFT}
-					ranlib ${NAME}
 
 clean:
-					rm -f ${OBJS_LIBFT} ${OBJS_BONUS_LIBFT} ${OBJS_PRINTF}
+					rm -f ${OBJS_LIBFT} ${OBJS_PRINTF}
 
 fclean:				clean
 					rm -f ${NAME}
@@ -66,9 +46,8 @@ fclean:				clean
 re:					fclean all
 
 test:				
-					gcc ${CFLAGS} libft.a ft_printf.c && ./a.out
+					gcc ${CFLAGS} libftprintf.a ft_printf.c && ./a.out
 
-everything:	all bonus
 
-.PHONY:		all clean fclean re bonus everything
+.PHONY:		all clean fclean re test
 

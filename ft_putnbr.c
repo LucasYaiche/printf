@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 13:37:29 by lyaiche           #+#    #+#             */
-/*   Updated: 2021/10/18 16:12:51 by lyaiche          ###   ########.fr       */
+/*   Created: 2021/10/20 17:10:40 by lyaiche           #+#    #+#             */
+/*   Updated: 2021/11/02 18:17:50 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t n)
+size_t	ft_putnbr(int n, size_t count)
 {
-	size_t	i;
-	size_t	j;
+	long int	a;
+	char		written;
 
-	if (s2[0] == '\0')
-		return ((char *)s1);
-	i = 0;
-	while (s1[i] != '\0' && i < n)
+	count++;
+	if (n < 0)
 	{
-		j = 0;
-		while (s2[j] != '\0' && (i + j) < n)
-		{
-			if (s1[i + j] != s2[j])
-				break ;
-			j++;
-		}
-		if (s2[j] == '\0')
-			return ((char *)(&s1[i]));
-		i++;
+		write(1, "-", 1);
+		a = n;
+		a *= -1;
+		count++;
 	}
-	return (0);
+	else
+		a = n;
+	if (a > 9)
+	{
+		count = ft_putnbr (a / 10, count);
+		a %= 10;
+	}
+	written = a + '0';
+	write(1, &written, 1);
+	return (count);
 }
