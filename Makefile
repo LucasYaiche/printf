@@ -2,7 +2,7 @@
 #[LIBFT] Fonctions partie principale#
 #===================================#
 
-SRC_LIBFT =ft_strlen.c ft_putchar.c ft_putnbr_unsigned.c \
+SRC_LIBFT =ft_putchar.c ft_putnbr_unsigned.c \
 ft_putstr.c ft_putnbr.c ft_puthexa_lower.c ft_puthexa_upper.c
 
 

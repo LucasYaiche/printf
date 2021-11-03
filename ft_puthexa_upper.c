@@ -6,31 +6,36 @@
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:12 by lyaiche           #+#    #+#             */
-/*   Updated: 2021/11/02 17:40:07 by lyaiche          ###   ########.fr       */
+/*   Updated: 2021/11/03 14:23:21 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_puthexa_upper(int nbr, size_t count)
+size_t	ft_puthexa_upper(unsigned long nbr, size_t count)
 {
-	unsigned int	i;
-	long long		nb;
-	char			*base;
-
-	base = "0123456789ABCDEF";
-	i = 0;
-	nb = nbr;
-	if (nbr < 0)
+	count++;
+	if (nbr > 9 && nbr < 16)
 	{
-		ft_putchar('-');
-		count++;
-		nb *= -1;
+		if (nbr == 10)
+			ft_putchar('A');
+		else if (nbr == 11)
+			ft_putchar('B');
+		else if (nbr == 12)
+			ft_putchar('C');
+		else if (nbr == 13)
+			ft_putchar('D');
+		else if (nbr == 14)
+			ft_putchar('E');
+		else if (nbr == 15)
+			ft_putchar('F');
 	}
-	while (base[i])
-		i++;
-	if (nb >= i)
-		count = ft_puthexa_upper(nb / i, count);
-	ft_putchar(base[nb % i]);
+	else if (nbr > 15)
+	{
+		count = ft_puthexa_upper(nbr / 16, count);
+		ft_puthexa_upper(nbr % 16, count);
+	}
+	else
+		ft_putchar(nbr + 48);
 	return (count);
 }
