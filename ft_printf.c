@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lucasyaiche <lucasyaiche@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:28:23 by lyaiche           #+#    #+#             */
-/*   Updated: 2021/11/03 16:53:43 by lyaiche          ###   ########.fr       */
+/*   Updated: 2021/11/04 02:36:31 by lucasyaiche      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static int	print_adress(unsigned long arg, int count)
 {
 	ft_putstr("0x");
 	count += 2;
-	count += ft_puthexa_lower(arg, 0, 'p');
+	count += ft_puthexa(arg, 0, 'p');
 	return (count);
 }
 
-static int	ft_printf_2(va_list args, char current, int count)
+static int	ft_printf_2(va_list args, const char current, int count)
 {
 	if (current == '%')
 	{
@@ -39,7 +39,7 @@ static int	ft_printf_2(va_list args, char current, int count)
 	else if (current == 'u')
 		count += ft_putnbr_unsigned(va_arg(args, unsigned long), 0);
 	else if (current == 'x' || current == 'X')
-		count += ft_puthexa_lower(va_arg(args, unsigned int),
+		count += ft_puthexa(va_arg(args, unsigned int),
 				0, current);
 	else if (current == 'p')
 		count = print_adress(va_arg(args, unsigned long), count);
@@ -63,10 +63,7 @@ int	ft_printf(const char *printed, ...)
 			count++;
 		}
 		else
-		{
-			i++;
-			count = ft_printf_2(args, printed[i], count);
-		}
+			count = ft_printf_2(args, printed[++i], count);
 	}
 	va_end(args);
 	return (count);
@@ -84,7 +81,7 @@ int	main(void)
 	nom = "Yaiche";
 	nbr = 10;
 	exemple = nom;
-	//ft_printf("Je m'appelle %w \n", nom);
+	//ft_printf("Je m'appelle %s %s \n", prenom, nom);
 	//printf("Je m'appelle %s %s \n", prenom, nom);
 	//ft_printf("%d\n", ft_printf("%x || %p\n", nbr, exemple));
 	//printf("%d\n", printf("%x || %p\n", nbr, exemple));

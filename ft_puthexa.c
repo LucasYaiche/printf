@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_puthexa_lower.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lucasyaiche <lucasyaiche@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 14:37:12 by lyaiche           #+#    #+#             */
-/*   Updated: 2021/11/03 15:30:47 by lyaiche          ###   ########.fr       */
+/*   Updated: 2021/11/04 01:42:54 by lucasyaiche      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*wich_base(char n)
 		return ("ABCDEF");
 }
 
-static void	ft_puthexa_lower_2(unsigned long nbr, char *base)
+static void	ft_puthexa_2(unsigned long nbr, char *base)
 {
 	if (nbr == 10)
 		ft_putchar(base[0]);
@@ -36,18 +36,18 @@ static void	ft_puthexa_lower_2(unsigned long nbr, char *base)
 		ft_putchar(base[5]);
 }
 
-size_t	ft_puthexa_lower(unsigned long nbr, size_t count, char n)
+size_t	ft_puthexa(unsigned long nbr, size_t count, char n)
 {
 	char	*base;
 
 	base = wich_base(n);
 	count++;
 	if (nbr > 9 && nbr < 16)
-		ft_puthexa_lower_2(nbr, base);
+		ft_puthexa_2(nbr, base);
 	else if (nbr > 15)
 	{
-		count = ft_puthexa_lower(nbr / 16, count, n);
-		ft_puthexa_lower(nbr % 16, count, n);
+		count = ft_puthexa(nbr / 16, count, n);
+		ft_puthexa(nbr % 16, count, n);
 	}
 	else
 		ft_putchar(nbr + 48);
