@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucasyaiche <lucasyaiche@student.42.fr>    +#+  +:+       +#+        */
+/*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:28:23 by lyaiche           #+#    #+#             */
-/*   Updated: 2021/11/04 02:36:31 by lucasyaiche      ###   ########.fr       */
+/*   Updated: 2021/11/23 15:33:33 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,25 +68,3 @@ int	ft_printf(const char *printed, ...)
 	va_end(args);
 	return (count);
 }
-
-/*
-int	main(void)
-{
-	char			*prenom;
-	char			*nom;
-	void			*exemple;
-	unsigned int	nbr;
-
-	prenom = "Lucas";
-	nom = "Yaiche";
-	nbr = 10;
-	exemple = nom;
-	//ft_printf("Je m'appelle %s %s \n", prenom, nom);
-	//printf("Je m'appelle %s %s \n", prenom, nom);
-	//ft_printf("%d\n", ft_printf("%x || %p\n", nbr, exemple));
-	//printf("%d\n", printf("%x || %p\n", nbr, exemple));
-	//ft_printf(" %p ", LONG_MIN);
-	//printf(" %p ", LONG_MIN);
-	return (0);
-}
-*/
